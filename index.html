@@ -270,35 +270,19 @@
             color: var(--text-light);
         }
 
-        /* Publications list */
-        .publications-list {
-            list-style: none;
-            margin-top: 2rem;
-        }
-
-        .publications-list li {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .publications-list li:hover {
-            border-color: var(--accent);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-        }
-
+        /* Publications */
         .pub-title {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.5rem;
             font-weight: 600;
             color: var(--primary);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
         }
 
         .pub-details {
             font-size: 0.95rem;
             color: var(--text-light);
+            margin-bottom: 1rem;
         }
 
         /* Footer */
@@ -426,32 +410,8 @@
             </div>
         </section>
 
-        <section id="presentations">
-            <h2>Presentation Design</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <div class="image-placeholder">
-                        [Beautiful slide from invited talk]
-                    </div>
-                    <div class="gallery-caption">Keynote presentation at Conference Name 2024</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="image-placeholder">
-                        [Well-designed figure from publication]
-                    </div>
-                    <div class="gallery-caption">Figure from Nature Communications publication</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="image-placeholder">
-                        [Another striking slide]
-                    </div>
-                    <div class="gallery-caption">Workshop presentation on ML for materials</div>
-                </div>
-            </div>
-        </section>
-
         <section id="visualizations">
-            <h2>Data Visualizations</h2>
+            <h2>Data Visualization</h2>
             <div class="gallery-grid">
                 <div class="gallery-item">
                     <div class="image-placeholder">
@@ -476,29 +436,38 @@
 
         <section id="publications">
             <h2>Selected Publications</h2>
-            <ul class="publications-list">
-                <li>
-                    <div class="pub-title">Publication Title Goes Here</div>
-                    <div class="pub-details">
-                        N. Andrejevic, et al. | Journal Name, Year | 
-                        <a href="https://doi.org/YOUR_DOI" class="project-link" target="_blank">DOI</a>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="image-placeholder" style="margin-top: 0;">
+                        [Publication thumbnail/figure will go here]
                     </div>
-                </li>
-                <li>
-                    <div class="pub-title">Another Publication Title</div>
-                    <div class="pub-details">
-                        N. Andrejevic, et al. | Journal Name, Year | 
-                        <a href="https://doi.org/YOUR_DOI" class="project-link" target="_blank">DOI</a>
+                    <h3 class="pub-title">Publication Title Goes Here</h3>
+                    <p class="pub-details">
+                        N. Andrejevic, et al. | Journal Name, Year
+                    </p>
+                    <a href="https://doi.org/YOUR_DOI" class="project-link" target="_blank">View Publication</a>
+                </div>
+                <div class="project-card">
+                    <div class="image-placeholder" style="margin-top: 0;">
+                        [Publication thumbnail/figure will go here]
                     </div>
-                </li>
-                <li>
-                    <div class="pub-title">Third Publication Title</div>
-                    <div class="pub-details">
-                        N. Andrejevic, et al. | Journal Name, Year | 
-                        <a href="https://doi.org/YOUR_DOI" class="project-link" target="_blank">DOI</a>
+                    <h3 class="pub-title">Another Publication Title</h3>
+                    <p class="pub-details">
+                        N. Andrejevic, et al. | Journal Name, Year
+                    </p>
+                    <a href="https://doi.org/YOUR_DOI" class="project-link" target="_blank">View Publication</a>
+                </div>
+                <div class="project-card">
+                    <div class="image-placeholder" style="margin-top: 0;">
+                        [Publication thumbnail/figure will go here]
                     </div>
-                </li>
-            </ul>
+                    <h3 class="pub-title">Third Publication Title</h3>
+                    <p class="pub-details">
+                        N. Andrejevic, et al. | Journal Name, Year
+                    </p>
+                    <a href="https://doi.org/YOUR_DOI" class="project-link" target="_blank">View Publication</a>
+                </div>
+            </div>
         </section>
 
         <footer>
