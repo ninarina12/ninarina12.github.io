@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nina Andrejevic - Computational Scientist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f4c75;
+            --highlight: #3282b8;
+            --text: #2d2d2d;
+            --text-light: #5d5d5d;
+            --background: #fafafa;
+            --card-bg: #ffffff;
+            --border: #e0e0e0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--text);
+            background: var(--background);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated background pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(50, 130, 184, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(15, 76, 117, 0.03) 0%, transparent 50%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        header {
+            padding: 4rem 0 3rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        h1 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .title {
+            font-size: 1.2rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.02em;
+        }
+
+        .bio {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-light);
+            max-width: 800px;
+            margin-bottom: 2rem;
+        }
+
+        .links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1.2rem;
+            border: 2px solid var(--accent);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--accent);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .links a:hover::before {
+            left: 0;
+        }
+
+        .links a:hover {
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Section styling */
+        section {
+            margin: 4rem 0;
+            animation: fadeIn 0.8s ease-out;
+            animation-fill-mode: both;
+        }
+
+        section:nth-child(2) { animation-delay: 0.1s; }
+        section:nth-child(3) { animation-delay: 0.2s; }
+        section:nth-child(4) { animation-delay: 0.3s; }
+        section:nth-child(5) { animation-delay: 0.4s; }
+        section:nth-child(6) { animation-delay: 0.5s; }
+
+        h2 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+        }
+
+        /* Project cards */
+        .project-grid {
+            display: grid;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+            border-radius: 8px 0 0 8px;
+        }
+
+        .project-card:hover {
+            transform: translateX(8px);
+            box-shadow: -4px 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .project-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .project-card h3 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .project-card p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .project-link {
+            color: var(--highlight);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: gap 0.3s ease;
+        }
+
+        .project-link:hover {
+            gap: 0.6rem;
+            text-decoration: underline;
+        }
+
+        .project-link::after {
+            content: '→';
+            font-size: 1.2rem;
+        }
+
+        /* Image placeholders */
+        .image-placeholder {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+            border: 2px dashed var(--border);
+            border-radius: 6px;
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-light);
+            margin: 1rem 0;
+            font-style: italic;
+        }
+
+        /* Gallery grid for presentations/visualizations */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        .gallery-item .image-placeholder {
+            margin: 0;
+            border: none;
+            border-radius: 0;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-caption {
+            padding: 1rem;
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        /* Publications list */
+        .publications-list {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .publications-list li {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .publications-list li:hover {
+            border-color: var(--accent);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        .pub-title {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .pub-details {
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 6rem;
+            padding: 3rem 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-light);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            header {
+                padding: 3rem 0 2rem;
+            }
+
+            .links {
+                flex-direction: column;
+            }
+
+            .links a {
+                text-align: center;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Nina Andrejevic</h1>
+            <p class="title">Computational Scientist • Argonne National Laboratory</p>
+            <p class="bio">
+                I'm a computational scientist at Argonne National Laboratory working at the intersection of machine learning and materials characterization. My research focuses on developing physics-aware machine learning models to assist the analysis of X-ray scattering and spectroscopic measurements of quantum materials systems. Alongside my research, I'm also enthusiastic about science communication through teaching and scientific data visualization.
+            </p>
+            <div class="links">
+                <a href="mailto:your.email@anl.gov">Email</a>
+                <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+                <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank">Google Scholar</a>
+                <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
+            </div>
+        </header>
+
+        <section id="tutorials">
+            <h2>Interactive Tutorials</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>Vision Transformers & Masked Autoencoders</h3>
+                    <div class="image-placeholder">
+                        [Screenshot of notebook will go here]
+                    </div>
+                    <p>Interactive tutorial exploring vision transformers and masked autoencoder architectures with hands-on implementation examples.</p>
+                    <a href="https://github.com/yourusername/vit-tutorial" class="project-link" target="_blank">View Repository</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>Equivariant Neural Networks for Phonon DoS</h3>
+                    <div class="image-placeholder">
+                        [Figure from tutorial will go here]
+                    </div>
+                    <p>Tutorial demonstrating how equivariant neural networks can be applied to predict phonon density of states in materials science.</p>
+                    <a href="https://doi.org/YOUR_DOI" class="project-link" target="_blank">View DOI</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="workshops">
+            <h2>Workshop Materials</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>Generative Art & Scientific Visualization</h3>
+                    <div class="image-placeholder">
+                        [Example visualization outputs will go here]
+                    </div>
+                    <p>Workshop materials covering computational approaches to generative art and principles of effective scientific visualization.</p>
+                    <a href="https://github.com/yourusername/genart-workshop" class="project-link" target="_blank">View Materials</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>AI/ML for X-ray Experiments</h3>
+                    <div class="image-placeholder">
+                        [Slide examples will go here]
+                    </div>
+                    <p>Comprehensive workshop on applying machine learning techniques to X-ray scattering and spectroscopy data analysis.</p>
+                    <a href="https://github.com/yourusername/ml-xray-workshop" class="project-link" target="_blank">View Materials</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="presentations">
+            <h2>Presentation Design</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="image-placeholder">
+                        [Beautiful slide from invited talk]
+                    </div>
+                    <div class="gallery-caption">Keynote presentation at Conference Name 2024</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="image-placeholder">
+                        [Well-designed figure from publication]
+                    </div>
+                    <div class="gallery-caption">Figure from Nature Communications publication</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="image-placeholder">
+                        [Another striking slide]
+                    </div>
+                    <div class="gallery-caption">Workshop presentation on ML for materials</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="visualizations">
+            <h2>Data Visualizations</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="image-placeholder">
+                        [Scientific visualization example]
+                    </div>
+                    <div class="gallery-caption">X-ray scattering data analysis visualization</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="image-placeholder">
+                        [Another visualization]
+                    </div>
+                    <div class="gallery-caption">Neural network architecture diagram</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="image-placeholder">
+                        [Third visualization]
+                    </div>
+                    <div class="gallery-caption">Quantum materials phase diagram</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="publications">
+            <h2>Selected Publications</h2>
+            <ul class="publications-list">
+                <li>
+                    <div class="pub-title">Publication Title Goes Here</div>
+                    <div class="pub-details">
+                        N. Andrejevic, et al. | Journal Name, Year | 
+                        <a href="https://doi.org/YOUR_DOI" class="project-link" target="_blank">DOI</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="pub-title">Another Publication Title</div>
+                    <div class="pub-details">
+                        N. Andrejevic, et al. | Journal Name, Year | 
+                        <a href="https://doi.org/YOUR_DOI" class="project-link" target="_blank">DOI</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="pub-title">Third Publication Title</div>
+                    <div class="pub-details">
+                        N. Andrejevic, et al. | Journal Name, Year | 
+                        <a href="https://doi.org/YOUR_DOI" class="project-link" target="_blank">DOI</a>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <footer>
+            <p>© 2024 Nina Andrejevic. Last updated December 2024.</p>
+        </footer>
+    </div>
+</body>
+</html>
