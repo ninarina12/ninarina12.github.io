@@ -925,24 +925,20 @@ a:hover > .plate__zoom, a:focus-visible > .plate__zoom { opacity: 1; transform: 
 .video-embed { position: relative; aspect-ratio: 16 / 9; background: var(--ink); min-height: 240px; }
 @media (min-width: 860px) { .card--split > .video-embed { min-height: 320px; } }
 .video-embed > .plate { position: absolute; inset: 0; aspect-ratio: auto; }
-.video-embed iframe,
-.video-embed__button,
-.video-embed__button img {
+.video-embed iframe {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   border: 0;
 }
-.video-embed__button {
-  display: grid;
-  place-items: center;
-  padding: 0;
-  background: none;
-  cursor: pointer;
+a.plate--poster { cursor: pointer; text-decoration: none; }
+.plate--poster .play-badge { transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease); }
+a.plate--poster:hover .play-badge,
+a.plate--poster:focus-visible .play-badge {
+  transform: scale(1.08);
+  box-shadow: 0 0 0 2px var(--marigold), 0 0 0 12px rgb(234 177 68 / 0.28);
 }
-.video-embed__button img { object-fit: cover; }
-.video-embed__button .play-badge { position: relative; }
 
 /* ---------- Footer ---------- */
 

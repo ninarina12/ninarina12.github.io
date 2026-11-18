@@ -123,12 +123,14 @@
                     </article>
 
                     <article class="card card--feature" data-reveal>
-                        <div class="plate plate--poster">
-                            <span class="play-badge" aria-hidden="true"></span>
-                            <span class="poster-label">Recording coming soon</span>
+                        <div class="video-embed" data-youtube-id="WPjPCm-hBMY" data-start="1920" data-title="The Future Starts Now: Early-Career Scientists at Argonne">
+                            <a class="plate plate--poster" href="https://www.youtube.com/watch?v=WPjPCm-hBMY&amp;t=1920s" target="_blank" rel="noopener">
+                                <span class="play-badge" aria-hidden="true"></span>
+                                <span class="poster-label">Watch my talk · starts at 32:00</span>
+                            </a>
                         </div>
                         <div class="card__body">
-                            <p class="chips"><span class="chip">Public lecture</span><span class="chip chip--soon">Recording soon</span></p>
+                            <p class="chips"><span class="chip">Public lecture</span><span class="chip chip--new">Video available</span></p>
                             <h3 class="card__title">The Future Starts Now: <span class="nowrap">Early-Career</span> Scientists at Argonne</h3>
                             <p class="card__text">A short talk about my career path and research, alongside fellow early-career scientists, at Argonne's OutLoud Public Lecture Series on November 12, 2026.</p>
                             <div class="card__actions">
@@ -355,25 +357,25 @@
                         <h3 class="subhead__title">Talks</h3>
                     </div>
 
-                    <!-- Recording: when Argonne releases it, put its YouTube ID in
-                         data-youtube-id (e.g. data-youtube-id="dQw4w9WgXcQ"). The poster below is
-                         then swapped for a click-to-play embed automatically. For a non-YouTube
-                         recording, replace the poster with a link instead. -->
+                    <!-- Recording: the poster links to YouTube at the start of my talk. With JS, clicking it loads
+                         the embedded player in place, starting at data-start (seconds; 1920 = 32:00). The same
+                         markup is used in the Latest card above. -->
                     <article class="card card--split" data-reveal>
-                        <div class="video-embed" data-youtube-id="" data-title="The Future Starts Now: Early-Career Scientists at Argonne">
-                            <div class="plate plate--poster">
+                        <div class="video-embed" data-youtube-id="WPjPCm-hBMY" data-start="1920" data-title="The Future Starts Now: Early-Career Scientists at Argonne">
+                            <a class="plate plate--poster" href="https://www.youtube.com/watch?v=WPjPCm-hBMY&amp;t=1920s" target="_blank" rel="noopener">
                                 <span class="play-badge" aria-hidden="true"></span>
-                                <span class="poster-label">Recording coming soon</span>
-                            </div>
+                                <span class="poster-label">Watch my talk · starts at 32:00</span>
+                            </a>
                         </div>
                         <div class="card__body">
-                            <p class="chips"><span class="chip">Public lecture</span><span class="chip chip--soon">Recording soon</span></p>
+                            <p class="chips"><span class="chip">Public lecture</span></p>
                             <p class="card__kicker">OutLoud Public Lecture Series · Argonne · November 12, 2026</p>
                             <h4 class="card__title">The Future Starts Now: <span class="nowrap">Early-Career</span> Scientists at Argonne</h4>
-                            <p class="card__text">A short talk about my career path and research at Argonne's final OutLoud public lecture of 2026, alongside fellow early-career scientists. Argonne will post the recording soon.</p>
+                            <p class="card__text">A short talk about my career path and research at Argonne's final OutLoud public lecture of 2026, alongside fellow early-career scientists. The video starts at my talk, 32 minutes into the full event recording.</p>
                             <div class="card__actions">
-                                <a class="link-arrow" href="https://www.anl.gov/event/the-future-starts-now-earlycareer-scientists-at-argonne" target="_blank" rel="noopener">Event page</a>
+                                <a class="link-arrow" href="https://www.youtube.com/watch?v=WPjPCm-hBMY&amp;t=1920s" target="_blank" rel="noopener">Watch on YouTube</a>
                                 <a class="link-arrow" href="#animations">Watch the animation from the talk</a>
+                                <a class="link-arrow" href="https://www.anl.gov/event/the-future-starts-now-earlycareer-scientists-at-argonne" target="_blank" rel="noopener">Event page</a>
                             </div>
                         </div>
                     </article>

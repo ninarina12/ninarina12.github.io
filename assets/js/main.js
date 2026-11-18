@@ -94,7 +94,7 @@
     };
 
     document.addEventListener('click', (event) => {
-      const trigger = event.target.closest('a.plate[href], a.tile__media[href]');
+      const trigger = event.target.closest('a.plate[href]:not(.plate--poster), a.tile__media[href]');
       if (!trigger || event.metaKey || event.ctrlKey || event.shiftKey || event.button !== 0) return;
       event.preventDefault();
 
@@ -140,36 +140,30 @@
     videos.forEach((v) => vio.observe(v));
   }
 
-  /* ---------- 5. Talk recording: click-to-load YouTube (privacy-enhanced) ---------- */
+  /* ---------- 5. Talk recording: click-to-load YouTube (privacy-enhanced) ----------
+     The poster is a normal link to YouTube at the right time stamp. With JS, clicking it
+     swaps in the embedded player instead, starting at data-start (seconds). Nothing is
+     loaded from YouTube until someone clicks. */
   document.querySelectorAll('.video-embed[data-youtube-id]').forEach((wrap) => {
     const id = wrap.dataset.youtubeId.trim();
-    if (!/^[\w-]{6,20}$/.test(id)) return;
+    const link = wrap.querySelector('a[href]');
+    if (!/^[\w-]{6,20}$/.test(id) || !link) return;
+    const start = Math.max(0, parseInt(wrap.dataset.start || '0', 10) || 0);
     const title = wrap.dataset.title || 'Video';
 
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.className = 'video-embed__button';
-    button.setAttribute('aria-label', `Play: ${title}`);
-    const poster = document.createElement('img');
-    poster.src = `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
-    poster.alt = '';
-    poster.loading = 'lazy';
-    const badge = document.createElement('span');
-    badge.className = 'play-badge';
-    badge.setAttribute('aria-hidden', 'true');
-    button.append(poster, badge);
-
-    button.addEventListener('click', () => {
+    link.addEventListener('click', (event) => {
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.button !== 0) return;
+      event.preventDefault();
+      const params = new URLSearchParams({ autoplay: '1', rel: '0' });
+      if (start) params.set('start', String(start));
       const iframe = document.createElement('iframe');
-      iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+      iframe.src = `https://www.youtube-nocookie.com/embed/${id}?${params}`;
       iframe.title = title;
-      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
       iframe.allowFullscreen = true;
       wrap.replaceChildren(iframe);
       iframe.focus();
-    }, { once: true });
-
-    wrap.replaceChildren(button);
-    wrap.closest('article')?.querySelectorAll('.chip--soon').forEach((c) => c.remove());
+    });
   });
 })();
