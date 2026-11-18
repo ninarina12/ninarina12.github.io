@@ -1,4 +1,4 @@
-# ninarina12.github.io
+# Personal Website
 
 Source for Nina Andrejevic's personal website.
 
